@@ -1,12 +1,11 @@
 import styles from './NewPostForm.module.scss'
 import { useForm } from "react-hook-form";
 
-const NewPostForm = () => {
+const NewPostForm = ({ onFormSubmit }) => {
     const {register,
         handleSubmit, formState: {errors} } = useForm()
     const onSubmit = data => {
-        console.log(data)
-        console.log(errors)
+        onFormSubmit(data)
     };
     console.log("errors", errors)
     return <div>

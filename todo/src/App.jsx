@@ -11,6 +11,7 @@ function App() {
     const [results, setResults] = useState([])
     const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [isRerenderRequired, setIsRerenderRequired] = useState(false)
+    const [postData, setPostData] = useState(null)
 
 
     useEffect(() => {
@@ -26,11 +27,15 @@ function App() {
     const buttonClick = () => {
         setIsButtonClicked(!isButtonClicked)
     }
+    const handleNewPostAddingData = (data) => {
+        setPostData(data);
+    };
+    console.log("postData", postData)
     const newPostAdding = () => {
         axios.post('http://localhost:3001/api/posts', {
-            title: 'foo',
-            body: 'bar',
-            userId: 1
+            title: postData.title,
+            body: postData.body,
+            userId: postData.userId
         }, {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -59,7 +64,7 @@ function App() {
             <hr />
             <button onClick={() => {newPostAdding()}}>Create new post</button>
             <hr />
-            <NewPostForm/>
+            {true && <NewPostForm onFormSubmit={handleNewPostAddingData}/>}
             <button onClick={() => (buttonClick())}>{isButtonClicked ? "Hide all posts" : "Show all posts"}</button>
             <hr />
             {isButtonClicked ? posts.map((post) => {
