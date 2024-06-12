@@ -64,15 +64,19 @@ function App() {
             <hr />
             <button onClick={() => {newPostAdding()}}>Create new post</button>
             <hr />
-            {true && <NewPostForm onFormSubmit={handleNewPostAddingData}/>}
+            <NewPostForm onFormSubmit={handleNewPostAddingData}/>
             <button onClick={() => (buttonClick())}>{isButtonClicked ? "Hide all posts" : "Show all posts"}</button>
             <hr />
-            {isButtonClicked ? posts.map((post) => {
-                return <Post userId={post.userId} id={post.id} title={post.title} body={post.body}/>
+
+            {isButtonClicked ? posts.map((post, index) => {
+                return <Post userId={post.userId}
+                             id={post.id}
+                             title={post.title}
+                             body={post.body}
+                             indexFromButton={index}
+                             posts={posts}/>
             }) : ""}
         </>
-
-
     )
 }
 

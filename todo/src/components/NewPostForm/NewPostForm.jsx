@@ -7,7 +7,6 @@ const NewPostForm = ({ onFormSubmit }) => {
     const onSubmit = data => {
         onFormSubmit(data)
     };
-    console.log("errors", errors)
     return <div>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <input placeholder="User ID" {...register("userId", { required: 'User ID is required', maxLength: 5, pattern: {value: /^\d+$/, message: "Use only digits!"} })}/>
