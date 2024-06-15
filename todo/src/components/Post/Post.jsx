@@ -2,8 +2,10 @@ import styles from './Post.module.scss'
 import PostEditButton from "../Buttons/PostEditButton/PostEditButton.jsx";
 import ModifyPostForm from "../ModifyPostForm/ModifyPostForm.jsx";
 import {useState} from "react";
+import PostDeleteButton from "../Buttons/PostDeleteButton/PostDeleteButton.jsx";
 
 const Post = ({ userId, id, title, body, indexFromButton, posts }) => {
+
 
     return <div className={styles.root}>
         <h1>Post from user with id: {userId}</h1>
@@ -13,11 +15,8 @@ const Post = ({ userId, id, title, body, indexFromButton, posts }) => {
         <br/>
         <div className={styles.buttons}>
             <PostEditButton indexFromButton={indexFromButton} posts={posts} />
-            <button>Delete</button>
+            <PostDeleteButton indexFromPost={indexFromButton}/>
         </div>
-        {id === indexFromButton ? <ModifyPostForm indexFromButton={indexFromButton}
-                                                  posts={posts}
-                                                   /> : ""}
     </div>
 }
 

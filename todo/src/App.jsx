@@ -73,8 +73,10 @@ function App() {
                              id={post.id}
                              title={post.title}
                              body={post.body}
-                             indexFromButton={index}
-                             posts={posts}/>
+                             indexFromButton={post.id}
+                             posts={posts}
+                             isRerenderRequired={isRerenderRequired}
+                             setIsRerenderRequired={setIsRerenderRequired}/>
             }) : ""}
         </>
     )
